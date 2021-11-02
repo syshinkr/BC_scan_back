@@ -15,7 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import include
+from django.views.generic import RedirectView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('bc/', include('BC_scan.urls')), 
+    path('', RedirectView.as_view(url='/bc/', permanent=True)), 
+    
 ]
+"""
+for DEBUG mode to apply static, media files 
+in PRODUCTION, delete it and get applied static, media by web server (e.g. NginX)
+"""
++ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
