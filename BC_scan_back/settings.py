@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Bc_scan.apps.BcScanConfig'
+    'BC_scan.apps.BcScanConfig',
 ]
 
 MIDDLEWARE = [
@@ -76,8 +76,15 @@ WSGI_APPLICATION = 'BC_scan_back.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'bc_scan',
+        'USER': 'root',
+        'PASSWORD': 'bs1784',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
