@@ -23,8 +23,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('bc/', include('BC_scan.urls')), 
-    path('', RedirectView.as_view(url='/bc/', permanent=True)), 
-    
 ]
 """
 for DEBUG mode to apply static, media files 
