@@ -24,8 +24,3 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('bc/', include('BC_scan.urls')), 
 ]
-"""
-for DEBUG mode to apply static, media files 
-in PRODUCTION, delete it and get applied static, media by web server (e.g. NginX)
-"""
-+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
