@@ -14,6 +14,9 @@ class BusinessCard(models.Model):
     company_tell: Company's Representative call number [nullable]
     com_extension_tell: Owner's call number In company [nullable]
     created_at: Automatically set the field to now(datetime) when the object is first created
+    
+    null to database
+    blank to admin site
     """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='id for PK to this Business Card')
     user = models.ForeignKey('User', on_delete=models.CASCADE)
@@ -22,9 +25,9 @@ class BusinessCard(models.Model):
     email = models.EmailField(max_length=50, help_text='email', null=True)
     fax = models.CharField(max_length=20, help_text='fax', null=True)
     company = models.CharField(max_length=20, help_text='company')
-    company_address = models.CharField(max_length=100, help_text='company address', null=True)
-    company_tell = models.CharField(max_length=20, help_text='company tell', null=True)
-    com_extension_tell = models.CharField(max_length=20, help_text='company extension tell', null=True)
+    company_address = models.CharField(max_length=100, help_text='company address', blank=True, null=True)
+    company_tell = models.CharField(max_length=20, help_text='company tell',blank=True, null=True)
+    com_extension_tell = models.CharField(max_length=20, help_text='company extension tell', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     
     # Metadata
@@ -48,15 +51,15 @@ class User(models.Model):
     access_token: access token to access to social (Only Google)
     refresh_token: refresh token to get new access token
     created_at: Automatically set the field to now(date) when the object is first created
-    
+
     If user don't have a id, email will be PK. 
-    But, email is too long to use as PK.
+    But, email is personal information, which is dangerous if it leaked.
     """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='ID for PK to user')
     email = models.EmailField(max_length=50, help_text='email', unique=True)
     name = models.CharField(max_length=8, help_text="user name")
     access_token = models.CharField(max_length=200, help_text='access token to access to social')
-    refresh_token = models.CharField(max_length=200, help_text='refresh token to get new access token', null=True)
+    refresh_token = models.CharField(max_length=200, help_text='refresh token to get new access token', blank=True, null=True)
     created_at = models.DateField(auto_now_add=True)
 
     class Meta:
