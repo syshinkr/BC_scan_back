@@ -55,8 +55,8 @@ class User(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='ID for PK to user')
     email = models.EmailField(max_length=50, help_text='email', unique=True)
     name = models.CharField(max_length=8, help_text="user name")
-    access_token = models.CharField(primary_key=True, help_text='access token to access to social')
-    refresh_token = models.CharField(help_text='refresh token to get new access token', null=True)
+    access_token = models.CharField(max_length=200, help_text='access token to access to social')
+    refresh_token = models.CharField(max_length=200, help_text='refresh token to get new access token', null=True)
     created_at = models.DateField(auto_now_add=True)
 
     class Meta:
