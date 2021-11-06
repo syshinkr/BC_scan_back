@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'BC_scan.apps.BcScanConfig',
+    'rest_framework', 
 ]
 
 MIDDLEWARE = [
