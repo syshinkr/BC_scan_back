@@ -23,5 +23,4 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('bc/', include('BC_scan.urls')), 
-    path('scan/', include('scan.urls')), 
 ]
